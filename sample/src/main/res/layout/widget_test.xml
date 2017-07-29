@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?><!-- 情報表示 --><!--<ImageView--><!--xmlns:android="http://schemas.android.com/apk/res/android"--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:padding="8dp"--><!--android:src="@drawable/ic_email"/>-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#999999"
+    android:layout_width="50dp"
+    android:layout_height="50dp">
+
+    <TextView
+        android:id="@+id/tv"
+        android:text="X"
+        android:layout_centerInParent="true"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+
+</RelativeLayout>
