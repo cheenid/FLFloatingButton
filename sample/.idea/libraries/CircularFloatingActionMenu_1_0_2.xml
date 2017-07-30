@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="CircularFloatingActionMenu-1.0.2">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.android/build-cache/2d0a03608fe91a14c236515e0db49ddc29a0aec9/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/2d0a03608fe91a14c236515e0db49ddc29a0aec9/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/wrapper/dists/gradle-4.0-milestone-1-all/caches/modules-2/files-2.1/com.oguzdev/CircularFloatingActionMenu/1.0.2/e795a03932d8a126b5ee29750655c05b216e8575/CircularFloatingActionMenu-1.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

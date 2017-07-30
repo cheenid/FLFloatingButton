@@ -80,6 +80,7 @@ public class CustomFloatingViewService extends Service implements FloatingViewLi
 
         initArcMenu(iconView, ITEM_DRAWABLES);
 
+
         iconView.setArcMenuListener(new ArcMenuListener() {
             @Override
             public void onMenuStateChanged(boolean expanded) {
@@ -92,7 +93,7 @@ public class CustomFloatingViewService extends Service implements FloatingViewLi
             }
         });
         iconView.setOnClickListener(new View.OnClickListener() {
-            @Override
+
             public void onClick(View v) {
                 if (!iconView.isExpanded()) {
                     mFloatingViewManager.setButtonMode(true);
@@ -112,7 +113,8 @@ public class CustomFloatingViewService extends Service implements FloatingViewLi
         loadDynamicOptions();
         // Initial Setting Options (you can't change options after created.)
         final FloatingViewManager.Options options = loadOptions(metrics);
-        options.overMargin = 240;
+        iconView.setAlignMent(false);
+        options.overMargin = getResources().getDimensionPixelSize(R.dimen.button_size_x1d5);
         mFloatingViewManager.addViewToWindow(iconView, options, this);
 
         // 常駐起動
