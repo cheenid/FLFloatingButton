@@ -118,6 +118,16 @@ public class ArcLayout extends ViewGroup {
                 mChildPadding, MIN_RADIUS);
         final int size = radius * 2 + mChildSize + mChildPadding + mLayoutPadding * 2;
 
+//        if (isExpanded()){
+//            // TODO: 2017/7/30 设置大小一半
+//            setMeasuredDimension(size/2, size/2);
+//
+//        }else {
+//            // TODO: 2017/7/30 设置大小一半
+//            setMeasuredDimension(size/2, size/2);
+//
+//        }
+
         setMeasuredDimension(size, size);
 
         final int count = getChildCount();

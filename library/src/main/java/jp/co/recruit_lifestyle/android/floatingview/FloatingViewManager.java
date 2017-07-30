@@ -528,10 +528,11 @@ public class FloatingViewManager implements ScreenChangedListener, View.OnTouchL
      * @param w
      * @param h
      */
-    public void updateFloatWindowSize(View view, int w, int h) {
+    public void updateFloatWindowSize(View view, int w, int h,int overMargin) {
         final FrameLayout.LayoutParams targetParams = new FrameLayout.LayoutParams(w, h);
         view.setLayoutParams(targetParams);
         mTargetFloatingView.requestLayout();
+        mTargetFloatingView.setOverMargin(overMargin);
     }
 
     /**

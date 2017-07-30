@@ -90,6 +90,12 @@ public class CustomFloatingViewService extends Service implements FloatingViewLi
                 } else {
                     mFloatingViewManager.setButtonMode(true);
                 }
+
+//                int widthx1 = getResources().getDimensionPixelSize(R.dimen.button_size);
+//                int widthx3 = getResources().getDimensionPixelSize(R.dimen.button_size_x3);
+//                mFloatingViewManager.updateFloatWindowSize(iconView,expanded?widthx3:widthx1,expanded?widthx3:widthx1,expanded?widthx3/2:widthx1/2);
+
+
             }
         });
         iconView.setOnClickListener(new View.OnClickListener() {
@@ -114,7 +120,7 @@ public class CustomFloatingViewService extends Service implements FloatingViewLi
         // Initial Setting Options (you can't change options after created.)
         final FloatingViewManager.Options options = loadOptions(metrics);
         iconView.setAlignMent(false);
-        options.overMargin = getResources().getDimensionPixelSize(R.dimen.button_size_x1d5);
+//        options.overMargin = getResources().getDimensionPixelSize(R.dimen.button_size_x1d5);
         mFloatingViewManager.addViewToWindow(iconView, options, this);
 
         // 常駐起動

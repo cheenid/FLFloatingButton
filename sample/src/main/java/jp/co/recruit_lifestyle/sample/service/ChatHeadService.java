@@ -57,7 +57,9 @@ public class ChatHeadService extends Service implements FloatingViewListener {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, getString(R.string.chathead_click_message));
-                mFloatingViewManager.updateFloatWindowSize(iconView,(int)(iconView.getMeasuredWidth()*1.2f),(int)(iconView.getMeasuredHeight()*1.2f));
+
+
+                mFloatingViewManager.updateFloatWindowSize(iconView,(int)(iconView.getMeasuredWidth()*1.2f),(int)(iconView.getMeasuredHeight()*1.2f),(int)(iconView.getMeasuredHeight()*0.4f));
 
             }
         });
