@@ -16,6 +16,7 @@
 
 package com.capricorn;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
@@ -117,18 +118,15 @@ public class ArcLayout extends ViewGroup {
         final int radius = mRadius = computeRadius(Math.abs(mToDegrees - mFromDegrees), getChildCount(), mChildSize,
                 mChildPadding, MIN_RADIUS);
         final int size = radius * 2 + mChildSize + mChildPadding + mLayoutPadding * 2;
+        if (isExpanded()){
+            // TODO: 2017/7/30 设置大小一半
+            setMeasuredDimension(size - 200, size);
+        }else {
+            // TODO: 2017/7/30 设置大小一半
+            setMeasuredDimension(size/3, size/3);
+        }
 
-//        if (isExpanded()){
-//            // TODO: 2017/7/30 设置大小一半
-//            setMeasuredDimension(size/2, size/2);
-//
-//        }else {
-//            // TODO: 2017/7/30 设置大小一半
-//            setMeasuredDimension(size/2, size/2);
-//
-//        }
-
-        setMeasuredDimension(size, size);
+//        setMeasuredDimension(size, size);
 
         final int count = getChildCount();
         for (int i = 0; i < count; i++) {
@@ -150,12 +148,13 @@ public class ArcLayout extends ViewGroup {
         for (int i = 0; i < childCount; i++) {
             Rect frame = computeChildFrame(centerX, centerY, radius, degrees, mChildSize);
             degrees += perDegrees;
-            getChildAt(i).layout(frame.left, frame.top, frame.right, frame.bottom);
+//            getChildAt(i).layout(frame.left, frame.top, frame.right, frame.bottom);
+            getChildAt(i).layout(frame.left - 200, frame.top, frame.right, frame.bottom);
         }
     }
 
     /**
-     * refers to {@link LayoutAnimationController#getDelayForView(View view)}
+     * refers to { LayoutAnimationController#getDelayForView(View view)}
      */
     private static long computeStartOffset(final int childCount, final boolean expanded, final int index,
             final float delayPercent, final long duration, Interpolator interpolator) {
@@ -214,6 +213,7 @@ public class ArcLayout extends ViewGroup {
         return animationSet;
     }
 
+    @TargetApi(22)
     private void bindChildAnimation(final View child, final int index, final long duration) {
         final boolean expanded = mExpanded;
         final int centerX = getWidth() / 2;

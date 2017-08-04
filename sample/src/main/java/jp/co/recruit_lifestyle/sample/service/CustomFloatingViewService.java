@@ -120,7 +120,7 @@ public class CustomFloatingViewService extends Service implements FloatingViewLi
         // Initial Setting Options (you can't change options after created.)
         final FloatingViewManager.Options options = loadOptions(metrics);
         iconView.setAlignMent(false);
-//        options.overMargin = getResources().getDimensionPixelSize(R.dimen.button_size_x1d5);
+        options.overMargin = getResources().getDimensionPixelSize(R.dimen.button_size)/2;
         mFloatingViewManager.addViewToWindow(iconView, options, this);
 
         // 常駐起動
