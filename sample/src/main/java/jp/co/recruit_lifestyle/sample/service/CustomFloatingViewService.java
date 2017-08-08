@@ -23,6 +23,11 @@ import android.widget.Toast;
 import com.capricorn.ArcMenu;
 import com.capricorn.ArcMenuListener;
 
+import java.util.Observable;
+import java.util.concurrent.TimeUnit;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
 import jp.co.recruit.floatingview.R;
 import jp.co.recruit_lifestyle.android.floatingview.FloatingViewListener;
 import jp.co.recruit_lifestyle.android.floatingview.FloatingViewManager;
@@ -106,7 +111,18 @@ public class CustomFloatingViewService extends Service implements FloatingViewLi
                 } else {
                     mFloatingViewManager.setButtonMode(false);
                 }
-                iconView.switchStatus();
+
+                //change size first
+                mFloatingViewManager.updateFloatWindowSize(iconView, 600, 600, 100);
+                io.reactivex.Observable.timer(1500, TimeUnit.MILLISECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<Long>() {
+                    @Override
+                    public void accept(Long aLong) throws Exception {
+                        iconView.switchStatus();
+//                        if(!iconView.isExpanded()){
+//                            iconView.switchStatus();
+//                        }
+                    }
+                });
                 Toast.makeText(CustomFloatingViewService.this, "Expandable menu clicked", Toast.LENGTH_SHORT).show();
 
             }
@@ -120,7 +136,7 @@ public class CustomFloatingViewService extends Service implements FloatingViewLi
         // Initial Setting Options (you can't change options after created.)
         final FloatingViewManager.Options options = loadOptions(metrics);
         iconView.setAlignMent(false);
-        options.overMargin = getResources().getDimensionPixelSize(R.dimen.button_size)/2;
+        options.overMargin = getResources().getDimensionPixelSize(R.dimen.button_size) / 2;
         mFloatingViewManager.addViewToWindow(iconView, options, this);
 
         // 常駐起動

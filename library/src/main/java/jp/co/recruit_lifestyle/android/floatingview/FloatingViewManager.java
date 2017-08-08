@@ -314,7 +314,7 @@ public class FloatingViewManager implements ScreenChangedListener, View.OnTouchL
     public boolean buttonMode = false;
 
     public void setButtonMode(boolean buttonMode) {
-        if (buttonMode){
+        if (buttonMode) {
             mTrashView.dismiss();
         }
         this.buttonMode = buttonMode;
@@ -483,7 +483,7 @@ public class FloatingViewManager implements ScreenChangedListener, View.OnTouchL
      * @param view    フローティングさせるView
      * @param options Options
      */
-    public void addViewToWindow(View view, Options options,FloatingViewListener callback) {
+    public void addViewToWindow(View view, Options options, FloatingViewListener callback) {
         final boolean isFirstAttach = mFloatingViewList.isEmpty();
         // FloatingView
         final FloatingView floatingView = new FloatingView(mContext);
@@ -528,7 +528,7 @@ public class FloatingViewManager implements ScreenChangedListener, View.OnTouchL
      * @param w
      * @param h
      */
-    public void updateFloatWindowSize(View view, int w, int h,int overMargin) {
+    public void updateFloatWindowSize(View view, int w, int h, int overMargin) {
         final FrameLayout.LayoutParams targetParams = new FrameLayout.LayoutParams(w, h);
         view.setLayoutParams(targetParams);
         mTargetFloatingView.requestLayout();

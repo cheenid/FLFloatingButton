@@ -232,7 +232,6 @@ public class ArcLayout extends ViewGroup {
 
         Animation animation = mExpanded ? createShrinkAnimation(0, toXDelta, 0, toYDelta, startOffset, duration,
                 interpolator) : createExpandAnimation(0, toXDelta, 0, toYDelta, startOffset, duration, interpolator);
-
         final boolean isLast = getTransformedIndex(expanded, childCount, index) == childCount - 1;
         animation.setAnimationListener(new AnimationListener() {
 
@@ -291,6 +290,7 @@ public class ArcLayout extends ViewGroup {
     public int getChildSize() {
         return mChildSize;
     }
+
 
     /**
      * switch between expansion and shrinkage

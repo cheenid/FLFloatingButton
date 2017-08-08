@@ -44,8 +44,8 @@ public class ArcMenu extends RelativeLayout {
     //靠左还是靠右
     private boolean alignMent;
 
-    public void setAlignMent(boolean alignMent) {
-        this.alignMent = alignMent;
+    public void setAlignMent(boolean alignRight) {
+        this.alignMent = alignRight;
         if (!alignMent) {
             mArcLayout.setArc(20+90, 160+90);
         }else {
@@ -102,8 +102,8 @@ public class ArcMenu extends RelativeLayout {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     mHintView.startAnimation(createHintSwitchAnimation(mArcLayout.isExpanded()));
                     mArcLayout.switchState(true);
+                    //   return true;
                 }
-
                 return false;
             }
         });
