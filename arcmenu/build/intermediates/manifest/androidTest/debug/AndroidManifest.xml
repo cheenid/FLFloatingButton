@@ -13,7 +13,7 @@
         android:label="Tests for com.capricorn.test"
         android:targetPackage="com.capricorn.test" />
 
-    <application>
+    <application android:debuggable="true" >
         <uses-library android:name="android.test.runner" />
     </application>
 
