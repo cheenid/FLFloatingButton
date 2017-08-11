@@ -95,7 +95,7 @@ public class CustomFloatingViewService extends Service implements FloatingViewLi
                 } else {
                     mFloatingViewManager.setButtonMode(true);
                 }
-
+                Log.e(TAG, "onMenuStateChanged: "+expanded);
 //                int widthx1 = getResources().getDimensionPixelSize(R.dimen.button_size);
 //                int widthx3 = getResources().getDimensionPixelSize(R.dimen.button_size_x3);
 //                mFloatingViewManager.updateFloatWindowSize(iconView,expanded?widthx3:widthx1,expanded?widthx3:widthx1,expanded?widthx3/2:widthx1/2);
@@ -104,25 +104,29 @@ public class CustomFloatingViewService extends Service implements FloatingViewLi
             }
         });
         iconView.setOnClickListener(new View.OnClickListener() {
-
             public void onClick(View v) {
+                Log.e(TAG, "onClick: iconView");
                 if (!iconView.isExpanded()) {
                     mFloatingViewManager.setButtonMode(true);
                 } else {
                     mFloatingViewManager.setButtonMode(false);
                 }
-
-                //change size first
-                mFloatingViewManager.updateFloatWindowSize(iconView, 600, 600, 100);
-                io.reactivex.Observable.timer(1500, TimeUnit.MILLISECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<Long>() {
-                    @Override
-                    public void accept(Long aLong) throws Exception {
-                        iconView.switchStatus();
-//                        if(!iconView.isExpanded()){
-//                            iconView.switchStatus();
-//                        }
-                    }
-                });
+                if(!iconView.isExpanded()){
+                    //change size first
+                    mFloatingViewManager.updateFloatWindowSize(iconView, 600, 600, 100);
+                    iconView.switchStatus();
+                }else {
+                    mFloatingViewManager.updateFloatWindowSize(iconView, 200, 200, 100);
+                }
+//                io.reactivex.Observable.timer(1500, TimeUnit.MILLISECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<Long>() {
+//                    @Override
+//                    public void accept(Long aLong) throws Exception {
+//                        iconView.switchStatus();
+////                        if(!iconView.isExpanded()){
+////                            iconView.switchStatus();
+////                        }
+//                    }
+//                });
                 Toast.makeText(CustomFloatingViewService.this, "Expandable menu clicked", Toast.LENGTH_SHORT).show();
 
             }
