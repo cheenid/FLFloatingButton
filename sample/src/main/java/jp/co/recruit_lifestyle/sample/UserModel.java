@@ -16,6 +16,10 @@ public class UserModel extends ViewModel {
         protected void onActive() {
             Log.e(TAG, "onActive: " );
             super.onActive();
+            if (getValue()!=null){
+                Log.e(TAG, "onActive:  get data not null ");
+                return;
+            }
             setValue(new User(1, 2, "" + System.currentTimeMillis()));
             new Thread(() -> {
                 try {
