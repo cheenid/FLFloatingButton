@@ -23,6 +23,8 @@ import android.widget.Toast;
 import com.capricorn.ArcMenu;
 import com.capricorn.ArcMenuListener;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 import java.util.concurrent.TimeUnit;
 
@@ -85,7 +87,10 @@ public class CustomFloatingViewService extends Service implements FloatingViewLi
 
         initArcMenu(iconView, ITEM_DRAWABLES);
 
-
+        new Thread(()->{
+            Log.d(TAG, "onStartCommand: ");
+            Log.e(TAG, "onStartCommand: 2" );
+        }).start();
         iconView.setArcMenuListener(new ArcMenuListener() {
             @Override
             public void onMenuStateChanged(boolean expanded) {
