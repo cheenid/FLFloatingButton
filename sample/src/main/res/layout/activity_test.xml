@@ -1,51 +1,145 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
-        <import type="jp.co.recruit_lifestyle.sample.User"/>
+
+        <import type="jp.co.recruit_lifestyle.sample.User" />
+
         <variable
             name="user"
-            type="User"/>
+            type="User" />
+
         <variable
             name="handler"
-            type="jp.co.recruit_lifestyle.sample.EventHandler"/>
+            type="jp.co.recruit_lifestyle.sample.EventHandler" />
 
     </data>
-    <android.support.constraint.ConstraintLayout
+
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="0dp"
-            android:layout_height="19dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:background="@color/preference_fallback_accent_color"
-            android:gravity="center"
-            android:text="@{String.valueOf(user.age)}"
-            android:textAlignment="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.27999997" />
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="24dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:text="@{user.name,default=DEFAULT}"
-            android:onClick="@{() -> handler.onVClick(user)}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/preference_fallback_accent_color"
+                android:gravity="center"
+                android:text="@{String.valueOf(user.age)}"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.30" />
 
-    </android.support.constraint.ConstraintLayout>
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="32dp"
+                android:onClick="@{() -> handler.onVClick(user)}"
+                android:text="@{user.name,default=DEFAULT}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
 
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:text="xxx"
+                android:layout_height="50dp">
+                <EditText
+                    android:background="#00ff00"
+                    android:hint="Hint"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp" />
+            </android.support.design.widget.TextInputLayout>
+
+
+
+        </android.support.constraint.ConstraintLayout>
+
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible" />
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+
+        <!--<RelativeLayout-->
+        <!--android:id="@+id/design_bottom_sheet_bar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="?attr/actionBarSize"-->
+        <!--android:layout_gravity="bottom"-->
+        <!--android:background="@color/preference_fallback_accent_color"-->
+        <!--android:visibility="gone"-->
+        <!--app:layout_anchor="@+id/design_bottom_sheet"-->
+        <!--app:layout_anchorGravity="top">-->
+
+        <!--<ImageView-->
+        <!--android:layout_width="23dp"-->
+        <!--android:layout_height="23dp"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_marginLeft="23dp"-->
+        <!--android:src="@drawable/ic_email" />-->
+
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:text="点击收起BottomSheet"-->
+        <!--android:textColor="#ffffff" />-->
+        <!--</RelativeLayout>-->
+
+        <RelativeLayout
+            android:id="@+id/design_bottom_sheet"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp"
+            android:background="#777777"
+            android:minHeight="100dp"
+            app:behavior_hideable="false"
+            app:behavior_peekHeight="106dp"
+            app:layout_behavior="@string/bottom_sheet_behavior">
+
+            <TextView
+                android:id="@+id/bottom_sheet_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="56dp"
+                android:layout_centerHorizontal="true"
+                android:background="#999999"
+                android:gravity="center"
+                android:text="这是一个BottomSheet" />
+
+            <ImageView
+                android:id="@+id/bottom_sheet_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:minHeight="100dp"
+                android:padding="10dp"
+                android:scaleType="centerInside" />
+        </RelativeLayout>
+    </android.support.design.widget.CoordinatorLayout>
 </layout>
